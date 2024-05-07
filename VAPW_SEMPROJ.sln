@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hejsek_Elevator_App", "Hejsek_Elevator_App\Hejsek_Elevator_App.csproj", "{0A419FDF-0EDE-4167-999A-5B2D37692FC7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AA4F996C-8E1C-43E8-9A40-9A6BBAE7C714} = {AA4F996C-8E1C-43E8-9A40-9A6BBAE7C714}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hejsek_Elevator", "Hejsek_Elevator\Hejsek_Elevator.csproj", "{AA4F996C-8E1C-43E8-9A40-9A6BBAE7C714}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A419FDF-0EDE-4167-999A-5B2D37692FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A419FDF-0EDE-4167-999A-5B2D37692FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A419FDF-0EDE-4167-999A-5B2D37692FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A419FDF-0EDE-4167-999A-5B2D37692FC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA4F996C-8E1C-43E8-9A40-9A6BBAE7C714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA4F996C-8E1C-43E8-9A40-9A6BBAE7C714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA4F996C-8E1C-43E8-9A40-9A6BBAE7C714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA4F996C-8E1C-43E8-9A40-9A6BBAE7C714}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6258FAB9-FCCC-4CB6-85ED-B37F9BAED080}
+	EndGlobalSection
+EndGlobal
