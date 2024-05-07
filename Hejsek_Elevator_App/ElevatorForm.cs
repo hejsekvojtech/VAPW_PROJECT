@@ -1,21 +1,16 @@
 ﻿using Hejsek_Elevator;
 using Hejsek_Elevator.Enums;
-
+using Hejsek_Elevator_App.Enums;
 using Hejsek_Elevator_App.Properties;
+using PollingTimer = System.Windows.Forms.Timer;
 
 namespace Hejsek_Elevator_App
 {
-    public enum ConnectionMode
-    {
-        EventBased,
-        Polling
-    }
-
     public partial class ElevatorForm : Form
     {
         private ConnectionMode connectionMode;
         private Elevator elevator;
-        private System.Windows.Forms.Timer timerPolling;
+        private PollingTimer timerPolling;
         private Button lastFloorBtn;
 
         private const int FLOOR_NUMBER = 12;
@@ -85,8 +80,8 @@ namespace Hejsek_Elevator_App
                 elevator.FloorChanged -= Elevator_FloorChanged;
                 elevator.DoorChanged -= Elevator_DoorChanged;
 
-                timerPolling = new System.Windows.Forms.Timer();
-                timerPolling.Interval = 300;
+                timerPolling = new PollingTimer();
+                timerPolling.Interval = 200;
                 timerPolling.Tick += TimerPolling_Tick;
                 timerPolling.Start();
             }
@@ -146,14 +141,12 @@ namespace Hejsek_Elevator_App
         {
             if (elevator.State != ElevatorState.Idle)
             {
-                MessageBox.Show("Nelze měnit cílové patro v pohybu\nVyčkejte až se výtah zastaví");
+                MessageBox.Show("Nelze měnit cílové patro v pohybu\nVyčkejte až se výtah zastaví a dveře se otevřou");
                 return;
             }
 
             if (lastFloorBtn != null)
-            {
                 lastFloorBtn.BackColor = SystemColors.ControlDark;
-            }
 
             Button clickedButton = sender as Button;
             clickedButton.BackColor = Color.LightBlue;
@@ -161,6 +154,18 @@ namespace Hejsek_Elevator_App
 
             StartTimer();
             elevator.GoToFloor(int.Parse(clickedButton.Text));
+        }
+
+        private void btnCall_Click(object sender, EventArgs e)
+        {
+            if (elevator.State != ElevatorState.Idle)
+            {
+                MessageBox.Show("Výtah právě používá někdo jiný");
+                return;
+            }
+
+            StartTimer();
+            elevator.GoToFloor(callerFloor);
         }
 
         private void PopulateFloorSelector(int n)
@@ -269,18 +274,6 @@ namespace Hejsek_Elevator_App
             catch (Exception)
             {
             }
-        }
-
-        private void btnCall_Click(object sender, EventArgs e)
-        {
-            if (elevator.State != ElevatorState.Idle)
-            {
-                MessageBox.Show("Výtah právě používá někdo jiný");
-                return;
-            }
-
-            StartTimer();
-            elevator.GoToFloor(callerFloor);
         }
     }
 }
